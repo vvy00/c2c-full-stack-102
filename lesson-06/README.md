@@ -1,10 +1,13 @@
-# Lesson 6 — Back End Setup (Server Folder)
+# Lesson 6 — Back End Setup
 
-Goal: set up your `server/` folder with Express and Nodemon and get a basic server running on port **3001**.
+This lesson has two parts:
 
-Stop after you successfully run `npm run devStart`. We will do the MySQL connection + queries after.
+- **API**: set up an Express server (port **3001**) + Nodemon.
+- **MySQL**: use VS Code Database Client to create a schema + table.
 
-## Work To Be Done In The IDE (Lesson 6)
+We are **not** connecting the Express server to MySQL yet (that comes after).
+
+## API
 
 ### 1) Start the client (so we avoid port conflicts)
 
@@ -110,4 +113,58 @@ npm run devStart
 
 Confirm it works by changing your `res.send("hello world")` message, saving the file, and refreshing the browser.
 
-Stop here — we will do the MySQL part next.
+Stop here for the API portion.
+
+## MySQL
+
+This dev container already runs a MySQL server for you (see `.devcontainer/docker-compose.yml`). You will create a schema and table using the **VS Code Database Client** extension.
+
+Connection info (dev container defaults):
+
+- Host: `127.0.0.1`
+- Port: `3306`
+- User: `root`
+- Password: `password`
+
+### 1) Create a MySQL connection in VS Code
+
+1. Open the **Database Client** view in VS Code.
+2. Click **Add Connection**.
+3. Choose **MySQL**.
+4. Enter the connection info above.
+5. Test/Save the connection and connect.
+
+### 2) Create a schema
+
+In Database Client, open a new query window for your MySQL connection and run:
+
+```sql
+CREATE DATABASE IF NOT EXISTS lesson_06;
+```
+
+### 3) Create a table
+
+Run the following (same query window is fine):
+
+```sql
+USE lesson_06;
+
+CREATE TABLE IF NOT EXISTS pkm_info (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	type VARCHAR(255) NOT NULL,
+	PRIMARY KEY (id)
+);
+```
+
+### 4) Quick verification
+
+Run:
+
+```sql
+USE lesson_06;
+SHOW TABLES;
+DESCRIBE pkm_info;
+```
+
+Stop here — we’ll connect the Express API to MySQL next.
