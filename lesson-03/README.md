@@ -112,7 +112,7 @@ return (
         placeholder="Enter an artist name"
         value={searchInput}
         type="input"
-        onKeyPress={(event) => console.log("key pressed:", event.key)}
+        onKeyDown={(event) => console.log("key pressed:", event.key)}
         onChange={(event) => setSearchInput(event.target.value)}
       />
       <Button
@@ -200,6 +200,21 @@ const handleSearchClick = () => {
 };
 ```
 
+## 9) Call `handleSearchClick` when Enter is pressed
+
+Now wire the Enter key so users can press Enter to search.
+
+In `src/App.js`, find your `<FormControl ... />` and update `onKeyDown` to call `handleSearchClick()` when the Enter key is pressed:
+
+```jsx
+onKeyDown={(event) => {
+  console.log("key pressed:", event.key);
+  if (event.key === "Enter") {
+    handleSearchClick();
+  }
+}}
+```
+
 ## Lesson 3 “Done” checklist
 
 - Bootstrap is installed and the CSS import is present in `src/index.js`
@@ -207,3 +222,4 @@ const handleSearchClick = () => {
 - Clicking Search logs: `clicked button`
 - `accessToken` exists and is set by `useEffect` on page load
 - Clicking Search makes a request and logs the returned JSON
+- Pressing Enter in the input triggers `handleSearchClick`
