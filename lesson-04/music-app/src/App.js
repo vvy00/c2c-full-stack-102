@@ -32,7 +32,7 @@ function App() {
   const search = async () => {
     console.log("Search for " + searchInput); // Drake
 
-    var searchParameters = {
+    var artistParameters = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function App() {
     // Update this section to get the artist id from the search results
     var artistID = await fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
-      searchParameters
+      artistParameters
     )
       .then((response) => response.json())
       .then((data) => {
