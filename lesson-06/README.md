@@ -7,6 +7,13 @@ This lesson has two parts:
 
 We are **not** connecting the Express server to MySQL yet (that comes after).
 
+### Copy last class ui code to lesson 6 directory
+
+```bash
+cd /workspaces/c2c-full-stack-102/lesson-05/app
+cp -r /workspaces/c2c-full-stack-102/lesson-05/app/client .
+```
+
 ## API
 
 ### 1) Start the client (so we avoid port conflicts)
