@@ -2,8 +2,6 @@
 
 In this lesson you will add a **search feature** to the CRUD app you built in Lesson 07.
 
-Lesson plan reference: `/workspaces/c2c-full-stack-102/lesson_material/lesson-8__lesson_8.txt`
-
 ## Learning Objectives (SWBAT)
 
 - Build a search UI using React state + a GET request
